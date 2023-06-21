@@ -1,0 +1,222 @@
+package org.example;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+
+    WebDriverManager web = WebDriverManager.chromedriver();
+    web.setup();
+    ChromeDriver dr = new ChromeDriver();
+    dr.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    Thread.sleep(10000);
+
+    //Login
+        // Username use command .getText() and .sendkeys() into text field
+        WebElement username_text = dr.findElement(By.xpath("//label[text() = 'Username']"));
+        System.out.println("label: " + username_text.getText());
+
+        WebElement username_sendkeys = dr.findElement(By.xpath("//input[@name = 'username']"));
+        username_sendkeys.sendKeys("Admin");
+
+        // Password use command .getText() and .sendkeys() into Password
+        WebElement password_text = dr.findElement(By.xpath("//label[text() = 'Password']"));
+        System.out.println("label: " + password_text.getText());
+
+        WebElement password_send = dr.findElement(By.xpath("//input[@name = 'password' ]"));
+        password_send.sendKeys("admin123");
+
+        // Button Login
+        WebElement btnlogin = dr.findElement(By.xpath("//button[@type = 'submit']"));
+        System.out.println("label button: " + btnlogin.getText());
+        btnlogin.click();
+
+
+        dr.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+        Thread.sleep(40000);
+    //Tabsmenu
+        //Dashboard
+            //Time at work
+        WebElement time_at_work = dr.findElement(By.xpath("//p[text() = 'Punched In: Jan 16th at 06:00 AM (GMT 4)']"));
+        System.out.println("Time at work: " + time_at_work.getText());
+
+            //My Actions
+        WebElement action1 = dr.findElement(By.xpath("//p[text() =' (13) Leave Requests to Approve']"));
+        System.out.println("Action1: " + action1.getText());
+
+        WebElement action2 = dr.findElement(By.xpath("//p[text() =' (9) Timesheets to Approve']"));
+        System.out.println("Action2: " + action2.getText());
+
+        WebElement action3 = dr.findElement(By.xpath("//p[text() = '(1) Pending Self Review']"));
+        System.out.println("Action3: " + action3.getText());
+
+        WebElement action4 = dr.findElement(By.xpath("//p[text() = '(1) Candidate to Interview']"));
+        System.out.println("Action4: " + action4.getText());
+
+            //Quick Launch
+        WebElement QuickLaunch = dr.findElement(By.xpath("//p[text() = 'Quick Launch']"));
+        System.out.println("QuickLaunch: " + QuickLaunch.getText());
+                //Assign Leave
+        WebElement AssignLeave = dr.findElement(By.xpath("//div[@title='Assign Leave']"));
+        System.out.println("AssignLeave title: " + AssignLeave.getText());
+                //Leave List
+        WebElement LeaveList = dr.findElement(By.xpath("//div[@title='Leave List']"));
+        System.out.println("LeaveList title: " + LeaveList.getText());
+                //Timesheets
+        WebElement Timesheets = dr.findElement(By.xpath("//div[@title='Timesheets']"));
+        System.out.println("Timesheets title: " + Timesheets.getText());
+                //Apply Leave
+        WebElement ApplyLeave = dr.findElement(By.xpath("//div[@title='Apply Leave']"));
+        System.out.println("ApplyLeave title: " + ApplyLeave.getText());
+                //My Leave
+        WebElement MyLeave = dr.findElement(By.xpath("//div[@title='My Leave']"));
+        System.out.println("MyLeave title: " + MyLeave.getText());
+                //My Timesheets
+        WebElement MyTimesheets = dr.findElement(By.xpath("//div[@title='My Timesheet']"));
+        System.out.println("MyTimesheets title: " + MyTimesheets.getText());
+
+
+
+        //Admin
+        WebElement Admin_menu = dr.findElement(By.xpath("//span[text() ='Admin']"));
+        System.out.println("Admin Menu: " + Admin_menu.getText());
+        WebElement btnAdmin_menu = dr.findElement(By.xpath("//a[@class='oxd-main-menu-item active']"));
+        btnAdmin_menu.click();
+
+        //PIM
+        WebElement PIM_menu = dr.findElement(By.xpath("//span[text() = 'PIM']"));
+        System.out.println("PIM menu: "+ PIM_menu.getText());
+        WebElement btnPIM_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/pim/viewPimModule']"));
+        btnPIM_menu.click();
+
+        //Leave
+        WebElement Leave = dr.findElement(By.xpath("//span[text()='Leave']"));
+        System.out.println("Leave menu: "+ Leave.getText());
+        WebElement btnLeave_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/leave/viewLeaveModule']"));
+        btnLeave_menu.click();
+
+        //Time
+        WebElement Time = dr.findElement(By.xpath("//span[text()='Time']"));
+        System.out.println("Time menu: "+ Time.getText());
+        WebElement btnTime_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/time/viewTimeModule']"));
+        btnTime_menu.click();
+
+        //Recruitment
+        WebElement Recruitment = dr.findElement(By.xpath("//span[text()='Recruitment']"));
+        System.out.println("Recruitment menu: "+ Recruitment.getText());
+        WebElement btnRecruitment_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/recruitment/viewRecruitmentModule']"));
+        btnRecruitment_menu.click();
+
+        //Performance
+        WebElement Performance = dr.findElement(By.xpath("//span[text()='Performance']"));
+        System.out.println("Performance menu: "+ Performance.getText());
+        WebElement btnPerformance_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/performance/viewPerformanceModule']"));
+        btnPerformance_menu.click();
+
+        //Dashboard
+        WebElement Dashboard = dr.findElement(By.xpath("//span[text()='Dashboard']"));
+        System.out.println("Dashboard menu: "+ Dashboard.getText());
+        WebElement btnDashboard_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/dashboard/index']"));
+        btnDashboard_menu.click();
+
+        //Directory
+        WebElement Directory = dr.findElement(By.xpath("//span[text()='Directory']"));
+        System.out.println("Directory menu: "+ Directory.getText());
+        WebElement btnDirectory_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/directory/viewDirectory']"));
+        btnDirectory_menu.click();
+
+        //Maintenance
+        WebElement Maintenance = dr.findElement(By.xpath("//span[text()='Maintenance']"));
+        System.out.println("Maintenance menu: "+ Maintenance.getText());
+        WebElement btnMaintenance_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/maintenance/viewMaintenanceModule']"));
+        btnMaintenance_menu.click();
+
+        //Buzz
+        WebElement Buzz = dr.findElement(By.xpath("//span[text()='Buzz']"));
+        System.out.println("Buzz menu: "+ Buzz.getText());
+        WebElement btnBuzz_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/buzz/viewBuzz']"));
+        btnBuzz_menu.click();
+
+        //My info
+        WebElement My_info = dr.findElement(By.xpath("//span[text()='My info']"));
+        System.out.println("My_info menu: "+ My_info.getText());
+        WebElement btnMyinfo_menu = dr.findElement(By.xpath("//a[@href='/web/index.php/pim/viewMyDetails']"));
+        btnMyinfo_menu.click();
+        dr.get("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7");
+        Thread.sleep(20000);
+            //Personal Details
+        WebElement PerDetails = dr.findElement(By.xpath("//a[text() = 'Personal Details']"));
+        System.out.println("Personal Details text: " + PerDetails.getText());
+        WebElement btnPerDetails = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewPersonalDetails/empNumber/7']"));
+        btnPerDetails.click();
+            //Contact Details
+        WebElement ConDetails = dr.findElement(By.xpath("//a[text() = 'Contact Details']"));
+        System.out.println("Contact Details text: " + ConDetails.getText());
+        WebElement btnConDetails = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/contactDetails/empNumber/7']"));
+        btnConDetails.click();
+            //Emergency Contacts
+        WebElement EmerContact = dr.findElement(By.xpath("//a[text() = 'Emergency Contacts']"));
+        System.out.println("Emergency Contacts text: " + EmerContact.getText());
+        WebElement btnEmerContact = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewEmergencyContacts/empNumber/7']"));
+        btnEmerContact.click();
+            //Dependents
+        WebElement Dependents = dr.findElement(By.xpath("//a[text() = 'Dependents']"));
+        System.out.println("Dependents text: " + Dependents.getText());
+        WebElement btnDependents = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewDependents/empNumber/7']"));
+        btnDependents.click();
+            //Immigration
+        WebElement Immigration = dr.findElement(By.xpath("//a[text() = 'Immigration']"));
+        System.out.println("Immigration text: " + Immigration.getText());
+        WebElement btnImmigration = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewImmigration/empNumber/7']"));
+        btnImmigration.click();
+            //Job
+        WebElement Job = dr.findElement(By.xpath("//a[text() = 'Job']"));
+        System.out.println("Job text: " + Job.getText());
+        WebElement btnJob = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewJobDetails/empNumber/7']"));
+        btnJob.click();
+            //Salary
+        WebElement Salary = dr.findElement(By.xpath("//a[text() = 'Salary']"));
+        System.out.println("Salary text: " + Salary.getText());
+        WebElement btnSalary = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewSalaryList/empNumber/7']"));
+        btnSalary.click();
+            //Tax Exemptions
+        WebElement Tax_Ex = dr.findElement(By.xpath("//a[text() = 'Tax Exemptions']"));
+        System.out.println("Tax_Ex text: " + Tax_Ex.getText());
+        WebElement btnTax_Ex = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewUsTaxExemptions/empNumber/7']"));
+        btnTax_Ex.click();
+            //Report-to
+        WebElement Rep_to = dr.findElement(By.xpath("//a[text() = 'Report-to']"));
+        System.out.println("Tax_Ex text: " + Rep_to.getText());
+        WebElement btnRep_to = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewReportToDetails/empNumber/7']"));
+        btnRep_to.click();
+            //Qualifications
+        WebElement Quali = dr.findElement(By.xpath("//a[text() = 'Qualifications']"));
+        System.out.println("Qualifications text: " + Quali.getText());
+        WebElement btnQuali = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewQualifications/empNumber/7']"));
+        btnQuali.click();
+            //Memberships
+        WebElement Memberships = dr.findElement(By.xpath("//a[text() = 'Memberships']"));
+        System.out.println("Memberships text: " + Memberships.getText());
+        WebElement btnMemb = dr.findElement(By.xpath("//a[@href = '/web/index.php/pim/viewMemberships/empNumber/7']"));
+        btnMemb.click();
+            //License Expiry Date
+        WebElement Li_ex_Date = dr.findElement(By.xpath("//label[text() = 'License Expiry Date']"));
+        System.out.println("License Expiry Date title: " + Li_ex_Date);
+                //Click date ... pass
+            //label Nationality
+        WebElement Nati = dr.findElement(By.xpath("//label[text()='Nationality']"));
+        System.out.println("Label Nationality: " + Nati);
+            //label Marital Status
+        WebElement Marital = dr.findElement(By.xpath("//label[text()='Marital Status']"));
+        System.out.println("Label Nationality: " + Marital);
+            //label Date of Birth
+        WebElement D_of_B = dr.findElement(By.xpath("//label[text()='Date of Birth']"));
+        System.out.println("Label Nationality: " + D_of_B);
+            //label Gender
+        WebElement Gender = dr.findElement(By.xpath("//label[text()='Gender']"));
+        System.out.println("Label Nationality: " + Gender);
+    }
+}
